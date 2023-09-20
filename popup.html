@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アラーム設定</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <h1>アラーム設定</h1>
+  <form id="alarm-form">
+      <label for="alarm-time">アラーム時間（24時間表記）：</label>
+      <input type="time" id="alarm-time" required>
+      <br>
+      <label for="alarm-url">URL：</label>
+      <input type="url" id="alarm-url" required>
+      <br>
+      <button type="button" id="set-alarm">アラーム設定</button>
+      <button type="button" id="stop-alarm" disabled>アラーム停止</button>
+  </form>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
