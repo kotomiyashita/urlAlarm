@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アラーム設定</title>
-  <link rel="stylesheet" type="text/css" href="popup.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyUrlAlarm Popup</title>
 </head>
 <body>
-  <h1>アラーム設定</h1>
-  <form id="alarm-form">
-      <label for="alarm-time">アラーム時間（24時間表記）：</label>
-      <input type="time" id="alarm-time" required>
-      <br>
-      <label for="alarm-url">URL：</label>
-      <input type="url" id="alarm-url" required>
-      <br>
-      <button type="button" id="set-alarm">アラーム設定</button>
-      <button type="button" id="stop-alarm" disabled>アラーム停止</button>
-  </form>
-  
-  <script src="popup.js"></script>
+    <form id="alarm-form">
+        <label for="alarm-time">アラーム時間:</label>
+        <input type="time" id="alarm-time" required>
+        <label for="alarm-url">カスタムURL:</label>
+        <input type="url" id="alarm-url" required>
+        <button type="submit" id="set-alarm">アラームを設定</button>
+    </form>
+    <div id="alarm-message" style="display: none;">アラームが鳴ります！</div>
+    <button id="stop-alarm" style="display: none;">アラームを止める</button>
+
+    <script src="popup.js"></script>
 </body>
 </html>
