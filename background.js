@@ -34,8 +34,24 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 });
 // アラームの音を鳴らす関数 (実際の音の再生処理を追加する必要があります)
 function playAlarmSound() {
-    // ここで音を鳴らす処理を実装する
-    // 例: new Audio("サウンドファイルのURL").play();
+    // サウンドファイルのURLを指定
+    const soundFileURL = chrome.runtime.getURL("alarm.mp3");
+    // Web Audio APIを使用して音声を再生
+    const audioContext = new AudioContext();
+    // 音声を取得
+    fetch(soundFileURL)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+        audioContext.decodeAudioData(buffer, audioData => {
+            const source = audioContext.createBufferSource();
+            source.buffer = audioData;
+            source.connect(audioContext.destination);
+            source.start();
+        });
+    })
+        .catch(error => {
+        console.error("音声の取得に失敗しました:", error);
+    });
 }
 // アラーム時にURLを開く関数
 function openAlarmURL(url) {

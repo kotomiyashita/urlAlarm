@@ -5,6 +5,7 @@
   "description": "Alarm that won't stop unless you click on a custom URL",
   "permissions": [
     "alarms",
+    "audio",
     "activeTab",
     "storage" 
   ],
@@ -23,5 +24,11 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     }
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["sound/alarm.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
