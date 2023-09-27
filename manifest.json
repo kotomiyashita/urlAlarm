@@ -5,7 +5,6 @@
   "description": "Alarm that won't stop unless you click on a custom URL",
   "permissions": [
     "alarms",
-    "audio",
     "activeTab",
     "storage" 
   ],

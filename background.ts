@@ -34,29 +34,21 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         openAlarmURL(alarmURL);
     }
 });
+chrome.alarms.onAlarm.addListener((alarm: chrome.alarms.Alarm) => {
+  if (alarm.name === "myAlarm") {
+    playAlarmSound();
+  }
+});
 
-// アラームの音を鳴らす関数 (実際の音の再生処理を追加する必要があります)
 function playAlarmSound() {
-  // サウンドファイルのURLを指定
-  const soundFileURL = chrome.runtime.getURL("alarm.mp3");
-
-  // Web Audio APIを使用して音声を再生
-  const audioContext = new AudioContext();
-
-  // 音声を取得
-  fetch(soundFileURL)
-      .then(response => response.arrayBuffer())
-      .then(buffer => {
-          audioContext.decodeAudioData(buffer, audioData => {
-              const source = audioContext.createBufferSource();
-              source.buffer = audioData;
-              source.connect(audioContext.destination);
-              source.start();
-          });
-      })
-      .catch(error => {
-          console.error("音声の取得に失敗しました:", error);
-      });
+  const audio = new Audio("alarm.mp3");
+  audio.play()
+    .then(() => {
+      console.log("アラームが鳴りました！");
+    })
+    .catch((error: any) => {
+      console.error("アラームの音声を再生できませんでした: " + error);
+    });
 }
 
 // アラーム時にURLを開く関数
